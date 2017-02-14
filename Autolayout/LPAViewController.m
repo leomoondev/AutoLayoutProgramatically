@@ -18,6 +18,8 @@
 @property (nonatomic, weak) NSLayoutConstraint *framingViewHeightConstraint;
 @property (nonatomic, weak) NSLayoutConstraint *framingViewWidthConstraint;
 
+@property (nonatomic, weak) UIView *purpleBoxView;
+
 @end
 
 @implementation LPAViewController
@@ -53,6 +55,14 @@
     [self.view addSubview:framingView];
     self.framingView = framingView;
     
+    //UIView and set its frame to CGRectZero
+    UIView *purpleBoxView = [[UIView alloc] initWithFrame:CGRectZero];
+    purpleBoxView.translatesAutoresizingMaskIntoConstraints = NO;
+    purpleBoxView.backgroundColor = [UIColor purpleColor];
+    [framingView addSubview:purpleBoxView];
+
+    //self.framingView = purpleBoxView;
+
     NSString *buttonsHorizontalConstraintsFormat = @"|[squareButton(==portraitButton)][portraitButton(==landscapeButton)][landscapeButton]|";
     NSArray *buttonsHorizontalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:buttonsHorizontalConstraintsFormat
                                                                    options:NSLayoutFormatAlignAllCenterY
@@ -107,7 +117,52 @@
 
     
     // Set up your views and constraints here
+
+                              
     
+    [NSLayoutConstraint constraintWithItem:purpleBoxView
+                                                                                attribute:NSLayoutAttributeTrailing
+                                                                                relatedBy:NSLayoutRelationEqual
+                                                                                   toItem:self.framingView
+                                                                                attribute:NSLayoutAttributeTrailing
+                                                                               multiplier:1.0
+                                                                                 constant:-20].active = YES;
+
+    
+    [NSLayoutConstraint constraintWithItem:purpleBoxView
+                                                                    attribute:NSLayoutAttributeTrailing
+                                                                    relatedBy:NSLayoutRelationEqual
+                                                                       toItem:self.framingView
+                                                                    attribute:NSLayoutAttributeTrailing
+                                                                   multiplier:1.0
+                                                                     constant:-20].active = YES;
+    
+    [NSLayoutConstraint constraintWithItem:purpleBoxView
+                                                                                 attribute:NSLayoutAttributeBottom
+                                                                                 relatedBy:NSLayoutRelationEqual
+                                                                                    toItem:self.framingView
+                                                                                 attribute:NSLayoutAttributeBottom
+                                                                                multiplier:1.0
+                                                                                  constant:-20].active = YES ;
+
+    
+    
+    [NSLayoutConstraint constraintWithItem:purpleBoxView
+                                                                    attribute:NSLayoutAttributeHeight
+                                                                    relatedBy:NSLayoutRelationEqual
+                                                                       toItem:nil
+                                                                    attribute:NSLayoutAttributeNotAnAttribute
+                                                                   multiplier:1.0
+                                                                     constant:50.0].active = YES;
+
+    
+    [NSLayoutConstraint constraintWithItem:purpleBoxView
+                                                                   attribute:NSLayoutAttributeWidth
+                                                                   relatedBy:NSLayoutRelationEqual
+                                                                      toItem:framingView
+                                                                   attribute:NSLayoutAttributeWidth
+                                                                  multiplier:(305.0/500.0)
+                                                                    constant:1].active = YES;
     
 }
 
