@@ -15,6 +15,8 @@
 @property (nonatomic, weak) UIButton *landscapeButton;
 
 @property (nonatomic, weak) UIView *framingView;
+@property (nonatomic, weak) UIView *redBoxView;
+
 @property (nonatomic, weak) NSLayoutConstraint *framingViewHeightConstraint;
 @property (nonatomic, weak) NSLayoutConstraint *framingViewWidthConstraint;
 
@@ -75,6 +77,21 @@
     thirdBlueBoxView.translatesAutoresizingMaskIntoConstraints = NO;
     thirdBlueBoxView.backgroundColor = [UIColor blueColor];
     [framingView addSubview:thirdBlueBoxView];
+    
+    UIView *redBoxView = [[UIView alloc] initWithFrame:CGRectZero];
+    redBoxView.translatesAutoresizingMaskIntoConstraints = NO;
+    redBoxView.backgroundColor = [UIColor redColor];
+    [framingView addSubview:redBoxView];
+    
+    UIView *leftOrangeBoxView = [[UIView alloc] initWithFrame:CGRectZero];
+    leftOrangeBoxView.translatesAutoresizingMaskIntoConstraints = NO;
+    leftOrangeBoxView.backgroundColor = [UIColor orangeColor];
+    [framingView addSubview:leftOrangeBoxView];
+    
+    UIView *rightOrangeBoxView = [[UIView alloc] initWithFrame:CGRectZero];
+    rightOrangeBoxView.translatesAutoresizingMaskIntoConstraints = NO;
+    rightOrangeBoxView.backgroundColor = [UIColor orangeColor];
+    [framingView addSubview:rightOrangeBoxView];
     
     NSString *buttonsHorizontalConstraintsFormat = @"|[squareButton(==portraitButton)][portraitButton(==landscapeButton)][landscapeButton]|";
     NSArray *buttonsHorizontalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:buttonsHorizontalConstraintsFormat
@@ -137,15 +154,6 @@
                                  attribute:NSLayoutAttributeTrailing
                                 multiplier:1.0
                                   constant:-20].active = YES;
-
-    
-    [NSLayoutConstraint constraintWithItem:purpleBoxView
-                                 attribute:NSLayoutAttributeTrailing
-                                 relatedBy:NSLayoutRelationEqual
-                                    toItem:self.framingView
-                                 attribute:NSLayoutAttributeTrailing
-                                multiplier:1.0
-                                  constant:-20].active = YES;
     
     [NSLayoutConstraint constraintWithItem:purpleBoxView
                                  attribute:NSLayoutAttributeBottom
@@ -154,8 +162,6 @@
                                  attribute:NSLayoutAttributeBottom
                                 multiplier:1.0
                                   constant:-20].active = YES ;
-
-    
     
     [NSLayoutConstraint constraintWithItem:purpleBoxView
                                  attribute:NSLayoutAttributeHeight
@@ -164,7 +170,6 @@
                                  attribute:NSLayoutAttributeNotAnAttribute
                                 multiplier:1.0
                                   constant:50.0].active = YES;
-
     
     [NSLayoutConstraint constraintWithItem:purpleBoxView
                                  attribute:NSLayoutAttributeWidth
@@ -264,6 +269,105 @@
                                  attribute:NSLayoutAttributeCenterY
                                 multiplier:1.5 constant:0.0].active = YES;
     
+    
+    [NSLayoutConstraint constraintWithItem:redBoxView
+                                 attribute:NSLayoutAttributeTrailing
+                                 relatedBy:NSLayoutRelationEqual
+                                    toItem:self.framingView
+                                 attribute:NSLayoutAttributeTrailing
+                                multiplier:1.0
+                                  constant:-20].active = YES;
+    
+    [NSLayoutConstraint constraintWithItem:redBoxView
+                                 attribute:NSLayoutAttributeTop
+                                 relatedBy:NSLayoutRelationEqual
+                                    toItem:self.framingView
+                                 attribute:NSLayoutAttributeTop
+                                multiplier:1.0
+                                  constant:20].active = YES ;
+    
+    [NSLayoutConstraint constraintWithItem:redBoxView
+                                 attribute:NSLayoutAttributeHeight
+                                 relatedBy:NSLayoutRelationEqual
+                                    toItem:nil
+                                 attribute:NSLayoutAttributeNotAnAttribute
+                                multiplier:1.0
+                                  constant:50.0].active = YES;
+    
+    
+    [NSLayoutConstraint constraintWithItem:redBoxView
+                                 attribute:NSLayoutAttributeWidth
+                                 relatedBy:NSLayoutRelationEqual
+                                    toItem:nil
+                                 attribute:NSLayoutAttributeWidth
+                                multiplier:1.0
+                                  constant:144].active = YES;
+    
+    [NSLayoutConstraint constraintWithItem:redBoxView
+                                 attribute:NSLayoutAttributeLeft
+                                 relatedBy:NSLayoutRelationEqual
+                                    toItem:leftOrangeBoxView
+                                 attribute:NSLayoutAttributeLeft
+                                multiplier:1.0
+                                  constant:-8].active = YES;
+    
+    [NSLayoutConstraint constraintWithItem:leftOrangeBoxView
+                                 attribute:NSLayoutAttributeTop
+                                 relatedBy:NSLayoutRelationEqual
+                                    toItem:redBoxView
+                                 attribute:NSLayoutAttributeTop
+                                multiplier:1.0
+                                  constant:10].active = YES ;
+    
+    [NSLayoutConstraint constraintWithItem:leftOrangeBoxView
+                                 attribute:NSLayoutAttributeHeight
+                                 relatedBy:NSLayoutRelationEqual
+                                    toItem:nil
+                                 attribute:NSLayoutAttributeNotAnAttribute
+                                multiplier:1.0
+                                  constant:30].active = YES;
+    
+    
+    [NSLayoutConstraint constraintWithItem:leftOrangeBoxView
+                                 attribute:NSLayoutAttributeWidth
+                                 relatedBy:NSLayoutRelationEqual
+                                    toItem:nil
+                                 attribute:NSLayoutAttributeWidth
+                                multiplier:1.0
+                                  constant:70].active = YES;
+    
+    [NSLayoutConstraint constraintWithItem:redBoxView
+                                 attribute:NSLayoutAttributeRight
+                                 relatedBy:NSLayoutRelationEqual
+                                    toItem:rightOrangeBoxView
+                                 attribute:NSLayoutAttributeRight
+                                multiplier:1.0
+                                  constant:8].active = YES;
+    
+    [NSLayoutConstraint constraintWithItem:rightOrangeBoxView
+                                 attribute:NSLayoutAttributeTop
+                                 relatedBy:NSLayoutRelationEqual
+                                    toItem:redBoxView
+                                 attribute:NSLayoutAttributeTop
+                                multiplier:1.0
+                                  constant:10].active = YES ;
+    
+    [NSLayoutConstraint constraintWithItem:rightOrangeBoxView
+                                 attribute:NSLayoutAttributeHeight
+                                 relatedBy:NSLayoutRelationEqual
+                                    toItem:nil
+                                 attribute:NSLayoutAttributeNotAnAttribute
+                                multiplier:1.0
+                                  constant:30].active = YES;
+    
+    
+    [NSLayoutConstraint constraintWithItem:rightOrangeBoxView
+                                 attribute:NSLayoutAttributeWidth
+                                 relatedBy:NSLayoutRelationEqual
+                                    toItem:nil
+                                 attribute:NSLayoutAttributeWidth
+                                multiplier:1.0
+                                  constant:50].active = YES;
 }
 
 /**
